@@ -27,7 +27,7 @@ Separator Types:
 
 It uses Pyspark (Apache Spark 2.4+, Python 3.7+) to apply each rule to the data and saves 2 DataFrames: `valid_data`, with lines that complied with all rules and types enforced as described on schema, and `invalid_data` with all the other lines.
 
-## Rules' file format
+## Rules file format
 - First line with a header (ignored), example: `RuleNumber,Condition`
 - Other lines containing the rule name and a quoted string, separed by comma. Example: `rule1,"rlike '[A-F0-8]*'"`
 
@@ -40,7 +40,7 @@ rule3,"in ('A','S','D','F')"
 rule4,"rlike '(0[0-8]|1[1-9]|[2-6][0-9]|7[01])'"
 ```
 
-## Data's file format
+## Data file format
 - First line MUST have the correct fields' number if the values are separated by some character
 - Data to be filtered.
 
