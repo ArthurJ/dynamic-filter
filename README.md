@@ -1,5 +1,5 @@
 # Dynamic Filter
-This program receive a `data` file (at local filesystem or on hdfs) to be filter, it's `schema` file, and a `rule` file (at local filesystem only) with rules to be applied at the filtering process.
+This program receive a `data` file (at local filesystem or on hdfs) to be filter, it's `schema` in a separated file, and a `rule` file (at local filesystem only) with rules to be applied at the filtering process.
 
 `spark-submit [spark options] dynamic_filter.py --data data_example.txt --rules rules.csv --schema schema_example.txt`
 

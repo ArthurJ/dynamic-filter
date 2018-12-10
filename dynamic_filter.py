@@ -1,11 +1,12 @@
 import csv
 import argparse
 
-#Parsing data file and rules dile
-description=('This program receive a data file (at local '
-             'filesystem or on hdfs) to be filter and a rule file '
-             '(at local filesystem only) with rules to be applied '
-             'at the filtering process.')
+#Parsing data file and rules file
+description=('This program receive a `data` file (at local '
+             'filesystem or on hdfs) to be filter, it\'s `schema`'
+             ' in a separated file, and a `rule` file (at local '
+             'filesystem only) with rules to be applied at the '
+             'filtering process.')
 parser = argparse.ArgumentParser(prog='Dynamic Filter', 
                                  description=description)
 
@@ -23,7 +24,7 @@ group1.add_argument("--schema", "-s",
                     required=True, 
                     help='File with the schema to be applied')
 
-group2 = parser.add_argument_group('Separator Types')
+group2 = parser.add_argument_group('Column separator types')
 group2.add_argument('--separator', '-S', type=str, default = ',', 
                     help='Use the character as separator')
 group2.add_argument('--width', '-w', action='store_true', 
@@ -135,8 +136,6 @@ invalid_data.show(10)
 
 
 ### Saving Data
-executor_number = sc.defaultParallelism or 10
-valid_data.repartition(executor_number).write.mode('overwrite')\
-                                        .saveAsTable('valid_data')
-invalid_data.repartition(executor_number).write.mode('overwrite')\
-                                        .saveAsTable('invalid_data')
+exec_qty = sc.defaultParallelism or 10
+valid_data.repartition(exec_qty).write.saveAsTable('valid_data')
+invalid_data.repartition(exec_qty).write.saveAsTable('invalid_data')
