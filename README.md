@@ -4,6 +4,7 @@ This program receive a `data` file (at local filesystem or on hdfs) to be filter
 `spark-submit [spark options] dynamic_filter.py --data data_example.txt --rules rules.csv --schema schema_example.txt`
 
 optional arguments:
+
     -h, --help                                                  show this help message and exit
 
     --ignore-types, -i                                          Ignore type enforcement step, all values will be saved as string
@@ -11,6 +12,7 @@ optional arguments:
     --log-level {ALL,DEBUG,ERROR,FATAL,INFO,OFF,TRACE,WARN}     Log level options
 
 Input Files:
+
     --data DATA, -d DATA                                        Text or gzip file to be filtered
 
     --rules RULES, -r RULES                                     File with the rules to be applied
@@ -18,8 +20,9 @@ Input Files:
     --schema SCHEMA, -s SCHEMA                                  File with the schema to be applied
 
 Separator Types:
+
     --separator SEPARATOR, -S SEPARATOR                         Use the character as separator
-    
+
     --width, -w                                                 Use fixed width to parse columns, ignoring separator
 
 It uses Pyspark (Apache Spark 2.4+, Python 3.7+) to apply each rule to the data and saves 2 DataFrames: `valid_data`, with lines that complied with all rules and types enforced as described on schema, and `invalid_data` with all the other lines.
