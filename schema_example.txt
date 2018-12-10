@@ -1,0 +1,4 @@
+Columns,DataType,Rule,Width
+UserCode,IntegerType,rule1,
+DateUpdate,DateType,rule2,
+UserName,StringType,rule3,
