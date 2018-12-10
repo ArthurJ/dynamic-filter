@@ -1,5 +1,5 @@
 # Dynamic Filter
-This program receive a `data` file (at local filesystem or on hdfs) to be filter and a `rule` file (at local filesystem only) with rules to be applied at the filtering process.
+This program receive a `data` file (at local filesystem or on hdfs) to be filter, it's `schema` file, and a `rule` file (at local filesystem only) with rules to be applied at the filtering process.
 
 `spark-submit [spark options] dynamic_filter.py --data data_example.txt --rules rules.csv --schema schema_example.txt`
 
@@ -16,9 +16,6 @@ Input Files:
 Separator Types:
     --separator SEPARATOR, -S SEPARATOR                         Use the character as separator
     --width, -w                                                 Use fixed width to parse columns, ignoring separator
-
-
-The program reads the first line of the `data` file to find the a file that contains the schema to be applied to the data.
 
 It uses Pyspark (Apache Spark 2.4+, Python 3.7+) to apply each rule to the data and saves 2 DataFrames: `valid_data`, with lines that complied with all rules and types enforced as described on schema, and `invalid_data` with all the other lines.
 
